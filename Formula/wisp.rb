@@ -1,10 +1,10 @@
 class Wisp < Formula
   desc "On-device, tool-using AI microharness for macOS"
   homepage "https://github.com/pidster/wisp"
-  url "https://github.com/pidster/wisp/releases/download/v0.10.3/wisp-0.10.3-arm64.tar.gz"
-  sha256 "0b2bb15c23b66a3b5e9a973e96b85af6ae84defa3f8eeac2bed47369012bb608"
+  url "https://github.com/pidster/wisp/releases/download/v0.11.0/wisp-0.11.0-arm64.tar.gz"
+  sha256 "549c84a1cfe02b88083be74ef270429702162e46e7cfcc0a1fc94b290c6060bb"
   license "MIT"
-  version "0.10.3"
+  version "0.11.0"
 
   depends_on arch: :arm64
   depends_on macos: :golden_gate
@@ -14,7 +14,7 @@ class Wisp < Formula
   end
 
   test do
-    assert_equal "0.10.3", shell_output("#{bin}/wisp --version").strip
-    assert_equal "0.10.3", shell_output("#{bin}/wisp-tui --version").strip
+    assert_equal "0.11.0", shell_output("#{bin}/wisp --version").strip
+    assert_equal "0.11.0", shell_output("#{bin}/wisp-tui --version").strip
   end
 end
