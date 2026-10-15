@@ -1,8 +1,8 @@
 class Wisp < Formula
   desc "On-device, tool-using AI microharness for macOS"
   homepage "https://github.com/pidster/wisp"
-  url "https://github.com/pidster/wisp/releases/download/v0.24.2/wisp-0.24.2-arm64.tar.gz"
-  sha256 "c9be1dba8847f12ee088a6fb1ed660db7477a92cf6b7d37f01fa23d2366ab275"
+  url "https://github.com/pidster/wisp/releases/download/v0.25.0/wisp-0.25.0-arm64.tar.gz"
+  sha256 "a69793d8581e6d87b2113d0a358ad0a09587276a11b6fd2d6ca10fe2c99d10b2"
   license "MIT"
 
   depends_on arch: :arm64
@@ -20,8 +20,8 @@ class Wisp < Formula
   end
 
   test do
-    assert_equal "0.24.2", shell_output("#{bin}/wisp --version").strip
-    assert_equal "0.24.2", shell_output("#{bin}/wisp-tui --version").strip
+    assert_equal "0.25.0", shell_output("#{bin}/wisp --version").strip
+    assert_equal "0.25.0", shell_output("#{bin}/wisp-tui --version").strip
     assert_path_exists libexec/"mlx.metallib"
     assert_path_exists zsh_completion/"_wisp"
     assert_path_exists bash_completion/"wisp"
