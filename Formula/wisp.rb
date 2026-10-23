@@ -1,8 +1,8 @@
 class Wisp < Formula
   desc "On-device, tool-using AI microharness for macOS"
   homepage "https://github.com/pidster/wisp"
-  url "https://github.com/pidster/wisp/releases/download/v0.30.1/wisp-0.30.1-arm64.tar.gz"
-  sha256 "ab757ea13b78d04815bf8b8bed388988d216d4612118974a265573d199159e37"
+  url "https://github.com/pidster/wisp/releases/download/v0.31.0/wisp-0.31.0-arm64.tar.gz"
+  sha256 "548572b177612873e62cc1a3f973510a0507a1fed6153079c4e8c975bc722328"
   license "MIT"
 
   depends_on arch: :arm64
@@ -15,15 +15,20 @@ class Wisp < Formula
     libexec.install "wisp", "mlx.metallib", "Wisp Notifier.app"
     bin.install_symlink libexec/"wisp"
     bin.install "wisp-tui"
+    # Where the parts are, relative to libexec/wisp, for wisp and its doctor's package finding (ADR 0072).
+    (libexec/"wisp-layout.json").write <<~JSON
+      {"frontEnd": "../bin/wisp-tui", "notifier": "Wisp Notifier.app", "metalLibrary": "mlx.metallib"}
+    JSON
     # The completion scripts are embedded in the binary; this runs 'wisp completions bash|zsh|fish' into
     # bash_completion, zsh_completion, and fish_completion.
     generate_completions_from_executable(bin/"wisp", "completions")
   end
 
   test do
-    assert_equal "0.30.1", shell_output("#{bin}/wisp --version").strip
-    assert_equal "0.30.1", shell_output("#{bin}/wisp-tui --version").strip
+    assert_equal "0.31.0", shell_output("#{bin}/wisp --version").strip
+    assert_equal "0.31.0", shell_output("#{bin}/wisp-tui --version").strip
     assert_path_exists libexec/"mlx.metallib"
+    assert_path_exists libexec/"wisp-layout.json"
     assert_predicate libexec/"Wisp Notifier.app/Contents/MacOS/WispNotifier", :executable?
     assert_path_exists zsh_completion/"_wisp"
     assert_path_exists bash_completion/"wisp"
