@@ -1,8 +1,8 @@
 class Wisp < Formula
   desc "On-device, tool-using AI microharness for macOS"
   homepage "https://github.com/pidster/wisp"
-  url "https://github.com/pidster/wisp/releases/download/v0.31.0/wisp-0.31.0-arm64.tar.gz"
-  sha256 "548572b177612873e62cc1a3f973510a0507a1fed6153079c4e8c975bc722328"
+  url "https://github.com/pidster/wisp/releases/download/v0.31.1/wisp-0.31.1-arm64.tar.gz"
+  sha256 "aa0a6f5765680b3e949ae775d417895112e062bded62491ba1abfc81a042fff8"
   license "MIT"
 
   depends_on arch: :arm64
@@ -25,8 +25,8 @@ class Wisp < Formula
   end
 
   test do
-    assert_equal "0.31.0", shell_output("#{bin}/wisp --version").strip
-    assert_equal "0.31.0", shell_output("#{bin}/wisp-tui --version").strip
+    assert_equal "0.31.1", shell_output("#{bin}/wisp --version").strip
+    assert_equal "0.31.1", shell_output("#{bin}/wisp-tui --version").strip
     assert_path_exists libexec/"mlx.metallib"
     assert_path_exists libexec/"wisp-layout.json"
     assert_predicate libexec/"Wisp Notifier.app/Contents/MacOS/WispNotifier", :executable?
