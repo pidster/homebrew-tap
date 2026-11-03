@@ -1,0 +1,21 @@
+cask "asura" do
+  version "0.0.1"
+  sha256 "020a0d251a7d70ac470b86e25509a4d32fd0b02ca0ee3d5ac5c9d8aad62372ae"
+
+  url "https://github.com/pidster/asura/releases/download/v#{version}/Asura-#{version}.dmg"
+  name "Asura"
+  desc "Coding AI harness with on-device models"
+  homepage "https://github.com/pidster/asura"
+
+  depends_on arch: :arm64
+  depends_on macos: :golden_gate
+
+  # The signed and notarised Asura.app stays whole: its profile authorises the Keychain access group, and the
+  # service re-execs the canonical bundle path, not the bin link (release-signing.md, SG6).
+  app "Asura.app"
+  binary "#{appdir}/Asura.app/Contents/MacOS/asura"
+
+  # A plain uninstall keeps ~/.asura. --zap moves all of it to the Trash (owner, 2026-11-02); Keychain items stay
+  # (release-distribution.md, zap and ~/.asura).
+  zap trash: "~/.asura"
+end
