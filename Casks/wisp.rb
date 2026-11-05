@@ -1,6 +1,6 @@
 cask "wisp" do
-  version "0.34.2"
-  sha256 "38a693e2013a474850017b2788f9ad9d6ab828c994469e33f545e40d36e4711c"
+  version "0.35.0"
+  sha256 "b265ca64039b1155bef7acaf7af3a8866257c7e6d425045629be9c6b7adcb82c"
 
   url "https://github.com/pidster/wisp/releases/download/v#{version}/Wisp-#{version}.dmg"
   name "Wisp"
